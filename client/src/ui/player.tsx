@@ -5,7 +5,6 @@ import ReactTooltip from "react-tooltip";
 import "../App.css";
 import { selectSelfIndex, selectTurnIndex } from "../selectors/game_selectors";
 import { Player, ReduxState } from "../store";
-import { ThemeContext } from "../themes";
 import Avatar from "./avatar";
 
 interface Props {
@@ -51,7 +50,6 @@ const PlayerComponent = (props: Props) => {
   };
 
   const { n, player, self_index, turn_index } = props;
-  const theme = React.useContext(ThemeContext);
   const imageUrl = player.userData?.image_url;
   const firstInitial = player.name ? player.name[0] : "U";
   const showAvatar = Boolean(player.user_id);
@@ -128,7 +126,6 @@ const PlayerComponent = (props: Props) => {
       </ReactTooltip>
       <div
         className={`Player${!player.connected ? " Disconnected" : ""}`}
-        style={turn_index === n ? theme.turnHighlight : undefined}
         onClick={
           self_index === n ? changeName : player.connected ? undefined : onKick
         }

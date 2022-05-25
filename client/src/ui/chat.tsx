@@ -40,14 +40,6 @@ const ChatBox: React.FC<Props & DispatchProp> = (props) => {
             props.socket.send(JSON.stringify({ type: "update_name", name }));
             localStorage.setItem("name", name);
             break;
-          case "/night":
-          case "/dark":
-            props.dispatch({ type: "THEME_DARK" });
-            break;
-          case "/day":
-          case "/light":
-            props.dispatch({ type: "THEME_LIGHT" });
-            break;
           case "/hints":
           case "/hint":
           case "/cheat":

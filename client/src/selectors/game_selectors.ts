@@ -4,7 +4,6 @@ import {
   createSelectorCreator,
 } from "reselect";
 import { ReduxState, selectState, TARGET_SCORES } from "../store";
-import { themes } from "../themes";
 
 export const selectOtherUsers = createSelector(
   selectState,
@@ -51,11 +50,6 @@ export const selectIsDev = createSelector(
     !process.env.NODE_ENV ||
     (process.env.NODE_ENV === "development" &&
       (window.location.port === "3005" || window.location.port === "3000"))
-);
-
-export const selectIsDarkTheme = createSelector(
-  selectState,
-  (state) => state.settings.theme === themes.dark
 );
 
 export const selectDiceRolls = createSelector(

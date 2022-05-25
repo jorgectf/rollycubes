@@ -1,6 +1,4 @@
 import { AnyAction, createStore, Reducer } from "redux";
-import { Theme, themes } from "./themes";
-
 import { initScene, destroyScene } from "./3d/main";
 import decode from "jwt-decode";
 
@@ -65,7 +63,6 @@ export interface ReduxState {
     cheats: boolean;
     sick3dmode: boolean;
     authServiceOrigin: string;
-    theme: Theme;
   };
   authToken?: string | null;
   userData?: UserData;
@@ -93,10 +90,6 @@ const initialState: ReduxState = {
     sick3dmode: (localStorage.getItem("sick3dmode") || "false") === "true",
     authServiceOrigin:
       localStorage.getItem("authServiceOrigin") || PROD_AUTH_SERVICE,
-    theme:
-      themes[
-        (localStorage.getItem("theme") || "light") as keyof typeof themes
-      ] || themes.light,
   },
   authToken: undefined,
   otherUsers: {},
@@ -133,37 +126,6 @@ const rootReducer: Reducer<ReduxState> = (
       return {
         ...state,
         rolled3d: true,
-      };
-    case "THEME_DARK":
-      localStorage.setItem("theme", "dark");
-      return {
-        ...state,
-        settings: {
-          ...state.settings,
-          theme: themes.dark,
-        },
-      };
-    case "TOGGLE_THEME":
-      localStorage.setItem(
-        "theme",
-        state.settings.theme === themes.dark ? "light" : "dark"
-      );
-      return {
-        ...state,
-        settings: {
-          ...state.settings,
-          theme:
-            state.settings.theme === themes.dark ? themes.light : themes.dark,
-        },
-      };
-    case "THEME_LIGHT":
-      localStorage.setItem("theme", "light");
-      return {
-        ...state,
-        settings: {
-          ...state.settings,
-          theme: themes.light,
-        },
       };
     case "TOGGLE_3D":
       const new3dmode = !state.settings.sick3dmode;
