@@ -43,9 +43,7 @@ jobs:
 
     - name: Build
       working-directory: game
-      run: |-
-        make clean
-        make CXX=g++-10 -j$(nproc)
+      run: make CXX=g++-10 -j$(nproc)
 
     - name: Perform CodeQL Analysis
       uses: github/codeql-action/analyze@v2
