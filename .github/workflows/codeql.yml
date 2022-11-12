@@ -29,9 +29,6 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v3
 
-    - name: Install dependencies
-      run: sudo apt install g++
-
     # Initializes the CodeQL tools for scanning.
     - name: Initialize CodeQL
       uses: github/codeql-action/init@v2
@@ -46,7 +43,7 @@ jobs:
 
     - name: Build
       working-directory: game
-      run: make
+      run: make CXX=g++-10
 
     - name: Perform CodeQL Analysis
       uses: github/codeql-action/analyze@v2
