@@ -44,6 +44,7 @@ jobs:
     - name: Build
       working-directory: game
       run: |-
+        mkdir build && cd build
         cmake ..
         cmake --build .
 
