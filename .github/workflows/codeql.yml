@@ -43,7 +43,9 @@ jobs:
 
     - name: Build
       working-directory: game
-      run: make release
+      run: |-
+        cmake ..
+        cmake --build .
 
     - name: Perform CodeQL Analysis
       uses: github/codeql-action/analyze@v2
