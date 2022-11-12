@@ -1,6 +1,6 @@
 # NOTE: this library won't properly rebuild.
 # If making changes, use 'make clean; make'
-override CFLAGS += -DLIBUS_NO_SSL -std=c11 -Isrc
+override CFLAGS += -DLIBUS_NO_SSL -std=c++20 -Isrc
 override LDFLAGS += uSockets.a
 
 SRC=src/*.c src/eventing/*.c src/crypto/*.c
